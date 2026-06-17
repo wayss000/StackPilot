@@ -1,0 +1,67 @@
+{
+  "name": "stackpilot",
+  "displayName": "StackPilot",
+  "description": "Detect project stacks and guide developers to lightweight VS Code profiles.",
+  "version": "0.0.1",
+  "publisher": "stackpilot",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:stackpilot.detectProject",
+    "onCommand:stackpilot.showRecommendation",
+    "onCommand:stackpilot.openProfileTemplate",
+    "onCommand:stackpilot.resetIgnoredProjects"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "stackpilot.detectProject",
+        "title": "StackPilot: Detect Current Project"
+      },
+      {
+        "command": "stackpilot.showRecommendation",
+        "title": "StackPilot: Show Profile Recommendation"
+      },
+      {
+        "command": "stackpilot.openProfileTemplate",
+        "title": "StackPilot: Open Profile Template"
+      },
+      {
+        "command": "stackpilot.resetIgnoredProjects",
+        "title": "StackPilot: Reset Ignored Projects"
+      }
+    ],
+    "configuration": {
+      "title": "StackPilot",
+      "properties": {
+        "stackpilot.autoDetectOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically detect the workspace stack when the extension starts."
+        },
+        "stackpilot.templateBaseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Optional remote base URL for profile templates. Leave empty to use bundled templates."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.8",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.5.2"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "StackPilot Node",
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"npm.packageManager\": \"auto\",\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  }\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"dbaeumer.vscode-eslint\" }, \"displayName\": \"ESLint\" },\n  { \"identifier\": { \"id\": \"esbenp.prettier-vscode\" }, \"displayName\": \"Prettier\" },\n  { \"identifier\": { \"id\": \"humao.rest-client\" }, \"displayName\": \"REST Client\" },\n  { \"identifier\": { \"id\": \"christian-kohler.npm-intellisense\" }, \"displayName\": \"npm Intellisense\" }\n]"
+}

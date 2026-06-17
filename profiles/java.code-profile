@@ -1,0 +1,5 @@
+{
+  "name": "StackPilot Java",
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"java.configuration.updateBuildConfiguration\": \"interactive\",\n  \"java.compile.nullAnalysis.mode\": \"automatic\"\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"vscjava.vscode-java-pack\" }, \"displayName\": \"Extension Pack for Java\" },\n  { \"identifier\": { \"id\": \"vmware.vscode-spring-boot\" }, \"displayName\": \"Spring Boot Extension Pack\" },\n  { \"identifier\": { \"id\": \"redhat.vscode-xml\" }, \"displayName\": \"XML\" }\n]"
+}

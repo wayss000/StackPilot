@@ -1,0 +1,5 @@
+{
+  "name": "StackPilot AI Agent",
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"markdown.preview.breaks\": true,\n  \"files.associations\": {\n    \"*.prompt\": \"markdown\"\n  }\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"ms-python.python\" }, \"displayName\": \"Python\" },\n  { \"identifier\": { \"id\": \"dbaeumer.vscode-eslint\" }, \"displayName\": \"ESLint\" },\n  { \"identifier\": { \"id\": \"humao.rest-client\" }, \"displayName\": \"REST Client\" },\n  { \"identifier\": { \"id\": \"bierner.markdown-mermaid\" }, \"displayName\": \"Markdown Preview Mermaid Support\" }\n]"
+}

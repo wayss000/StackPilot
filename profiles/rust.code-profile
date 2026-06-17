@@ -1,0 +1,5 @@
+{
+  "name": "StackPilot Rust",
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"rust-analyzer.check.command\": \"clippy\"\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"rust-lang.rust-analyzer\" }, \"displayName\": \"rust-analyzer\" },\n  { \"identifier\": { \"id\": \"tamasfe.even-better-toml\" }, \"displayName\": \"Even Better TOML\" },\n  { \"identifier\": { \"id\": \"vadimcn.vscode-lldb\" }, \"displayName\": \"CodeLLDB\" }\n]"
+}
