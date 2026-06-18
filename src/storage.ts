@@ -9,7 +9,7 @@ export class StackPilotStorage {
   constructor(private readonly state: vscode.Memento) {}
 
   isIgnored(result: DetectionResult): boolean {
-    return this.getIgnoredProjects().includes(this.workspaceKey(result)) || this.getIgnoredStacks().includes(result.stack.id);
+    return this.getIgnoredProjects().includes(this.workspaceKey(result)) || this.getIgnoredStacks().includes(result.recommendedProfile.id);
   }
 
   async ignoreProject(result: DetectionResult): Promise<void> {
@@ -26,8 +26,9 @@ export class StackPilotStorage {
 
   async rememberRecommendation(result: DetectionResult): Promise<void> {
     await this.state.update(LAST_RECOMMENDATION_KEY, {
-      stack: result.stack.id,
-      profileName: result.stack.profileName,
+      stack: result.recommendedProfile.id,
+      profileName: result.recommendedProfile.profileName,
+      detectedStacks: result.detectedStacks.map((item) => item.stack.id),
       workspace: this.workspaceKey(result),
       timestamp: new Date().toISOString()
     });

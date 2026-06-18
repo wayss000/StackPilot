@@ -48,8 +48,8 @@
         },
         "stackpilot.templateBaseUrl": {
           "type": "string",
-          "default": "",
-          "description": "Optional remote base URL for profile templates. Leave empty to use bundled templates."
+          "default": "https://github.com/wayss000/StackPilot/blob/main/profiles",
+          "description": "Remote base URL for profile templates."
         }
       }
     }

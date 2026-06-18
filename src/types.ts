@@ -17,8 +17,14 @@ export interface StackProfile {
   extensions: RecommendedExtension[];
 }
 
-export interface DetectionResult {
+export interface DetectedStack {
   stack: StackProfile;
+  evidence: string[];
+}
+
+export interface DetectionResult {
+  recommendedProfile: StackProfile;
+  detectedStacks: DetectedStack[];
   workspaceFolder: vscode.WorkspaceFolder;
   evidence: string[];
 }
