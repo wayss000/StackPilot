@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext): void {
       const result = lastDetection ?? await detectWorkspaceStack();
       if (result) {
         lastDetection = result;
-        await guide.openTemplate(result.stack);
+        await guide.openTemplate(result.recommendedProfile);
         return;
       }
 
@@ -83,32 +83,18 @@ async function detectAndNotify(
   await storage.rememberRecommendation(result);
 
   const action = await vscode.window.showInformationMessage(
-    `StackPilot detected a ${result.stack.label} project. Recommended profile: ${result.stack.profileName}.`,
-    'View Recommendations',
-    'Open Template',
-    'Switch Guide',
-    'Ignore',
-    'Always Ignore Stack'
+    'StackPilot detected this project. View recommended profile?',
+    'View Guide',
+    'Later',
+    'Ignore'
   );
 
-  if (action === 'View Recommendations') {
+  if (action === 'View Guide') {
     await guide.showDetails(result);
-  }
-
-  if (action === 'Open Template') {
-    await guide.openTemplate(result.stack);
-  }
-
-  if (action === 'Switch Guide') {
-    await guide.showManualSwitchReason(result.stack);
   }
 
   if (action === 'Ignore') {
     await storage.ignoreProject(result);
-  }
-
-  if (action === 'Always Ignore Stack') {
-    await storage.ignoreStack(result.stack.id);
   }
 
   return result;
