@@ -2,9 +2,10 @@
   "name": "stackpilot",
   "displayName": "StackPilot",
   "description": "Detect project stacks and guide developers to lightweight VS Code profiles.",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "publisher": "stackpilot",
   "license": "MIT",
+  "icon": "src/resource/LogoStackPolit-128.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/wayss000/StackPilot.git"
@@ -61,6 +62,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "compare": "tsc -p ./",
+    "package:vsix": "npx @vscode/vsce package --allow-missing-repository",
     "watch": "tsc -watch -p ./",
     "vscode:prepublish": "npm run compile"
   },
