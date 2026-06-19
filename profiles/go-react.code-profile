@@ -1,0 +1,5 @@
+{
+  "name": "StackPilot Go + React",
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"go.toolsManagement.autoUpdate\": true,\n  \"go.useLanguageServer\": true,\n  \"gopls\": {\n    \"formatting.gofumpt\": true\n  },\n  \"[go]\": {\n    \"editor.defaultFormatter\": \"golang.go\"\n  },\n  \"typescript.preferences.importModuleSpecifier\": \"non-relative\",\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[javascriptreact]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescriptreact]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  }\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"golang.go\" }, \"displayName\": \"Go\" },\n  { \"identifier\": { \"id\": \"dbaeumer.vscode-eslint\" }, \"displayName\": \"ESLint\" },\n  { \"identifier\": { \"id\": \"esbenp.prettier-vscode\" }, \"displayName\": \"Prettier\" },\n  { \"identifier\": { \"id\": \"christian-kohler.npm-intellisense\" }, \"displayName\": \"npm Intellisense\" }\n]"
+}

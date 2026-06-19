@@ -8,9 +8,9 @@ export const STACK_PROFILES: Record<StackId, StackProfile> = {
     templateFile: 'java.code-profile',
     description: 'Java and Spring Boot development.',
     extensions: [
-      { id: 'vscjava.vscode-java-pack', name: 'Extension Pack for Java', reason: 'Language support, build tools, test runner, and debugger.' },
-      { id: 'vmware.vscode-spring-boot', name: 'Spring Boot Extension Pack', reason: 'Spring Boot navigation, app properties, and dashboard support.' },
-      { id: 'redhat.vscode-xml', name: 'XML', reason: 'Better pom.xml and XML editing.' }
+      { id: 'vscjava.vscode-java-pack', name: 'Extension Pack for Java', reason: 'Core Java language support, debugger, test runner, Maven, and project management.' },
+      { id: 'vmware.vscode-spring-boot', name: 'Spring Boot Tools', reason: 'Spring-aware navigation plus better application.properties and application.yml support.' },
+      { id: 'redhat.vscode-xml', name: 'XML', reason: 'Richer pom.xml, XML, XSD, and namespace-aware editing.' }
     ]
   },
   go: {
@@ -20,8 +20,7 @@ export const STACK_PROFILES: Record<StackId, StackProfile> = {
     templateFile: 'go.code-profile',
     description: 'Go module development.',
     extensions: [
-      { id: 'golang.go', name: 'Go', reason: 'Official Go language support.' },
-      { id: 'streetsidesoftware.code-spell-checker', name: 'Code Spell Checker', reason: 'Useful lightweight checks for docs and identifiers.' }
+      { id: 'golang.go', name: 'Go', reason: 'Official Go extension with language server, testing, debugging, and Go tool integration.' }
     ]
   },
   python: {
@@ -31,10 +30,10 @@ export const STACK_PROFILES: Record<StackId, StackProfile> = {
     templateFile: 'python.code-profile',
     description: 'Python application and scripting development.',
     extensions: [
-      { id: 'ms-python.python', name: 'Python', reason: 'Official Python language support.' },
+      { id: 'ms-python.python', name: 'Python', reason: 'Official Python extension with environments, testing, and core editor integration.' },
       { id: 'ms-python.vscode-pylance', name: 'Pylance', reason: 'Fast IntelliSense and type analysis.' },
-      { id: 'charliermarsh.ruff', name: 'Ruff', reason: 'Fast linting and formatting.' },
-      { id: 'tamasfe.even-better-toml', name: 'Even Better TOML', reason: 'Better pyproject.toml editing.' }
+      { id: 'ms-python.debugpy', name: 'Python Debugger', reason: 'Dedicated Python debugging support from the Python tooling team.' },
+      { id: 'charliermarsh.ruff', name: 'Ruff', reason: 'Fast linting, formatting, and import organization for modern Python projects.' }
     ]
   },
   vue: {
@@ -58,7 +57,7 @@ export const STACK_PROFILES: Record<StackId, StackProfile> = {
     extensions: [
       { id: 'dbaeumer.vscode-eslint', name: 'ESLint', reason: 'JavaScript and TypeScript linting.' },
       { id: 'esbenp.prettier-vscode', name: 'Prettier', reason: 'Consistent formatting.' },
-      { id: 'dsznajder.es7-react-js-snippets', name: 'ES7+ React/Redux/React-Native snippets', reason: 'Common React snippets.' }
+      { id: 'christian-kohler.npm-intellisense', name: 'npm Intellisense', reason: 'Autocomplete package imports and dependency names in React projects.' }
     ]
   },
   node: {
@@ -93,10 +92,9 @@ export const STACK_PROFILES: Record<StackId, StackProfile> = {
     templateFile: 'ai-agent.code-profile',
     description: 'MCP, agent, prompt, and AI application projects.',
     extensions: [
-      { id: 'ms-python.python', name: 'Python', reason: 'Common agent runtime support.' },
-      { id: 'dbaeumer.vscode-eslint', name: 'ESLint', reason: 'Useful for TypeScript agent projects.' },
+      { id: 'redhat.vscode-yaml', name: 'YAML', reason: 'Useful for workflow files, model configs, and tool manifests.' },
       { id: 'humao.rest-client', name: 'REST Client', reason: 'Test model, tool, and service endpoints.' },
-      { id: 'bierner.markdown-mermaid', name: 'Markdown Preview Mermaid Support', reason: 'Document agent workflows and tool graphs.' }
+      { id: 'yzhang.markdown-all-in-one', name: 'Markdown All in One', reason: 'Better editing for prompts, specs, and agent documentation.' }
     ]
   }
 };

@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { buildGuideMessages, FALLBACK_LANGUAGE, GUIDE_LANGUAGES, OFFICIAL_GITHUB_URL, resolveGuideLanguage } from './i18n';
 import { DetectionResult, StackProfile } from './types';
 
 const PROFILES_URL = 'https://github.com/wayss000/StackPilot/tree/main/profiles';
@@ -49,10 +50,13 @@ export class ProfileGuide {
 
   private renderGuide(webview: vscode.Webview, result: DetectionResult): string {
     const nonce = createNonce();
-    const defaultLanguage = vscode.env.language.toLowerCase().startsWith('zh') ? 'zh-CN' : 'en';
     const ideName = getIdeName();
+    const defaultLanguage = resolveGuideLanguage(vscode.env.language);
+    const messages = buildGuideMessages(ideName);
     const data = {
       defaultLanguage,
+      languages: GUIDE_LANGUAGES,
+      fallbackLanguage: FALLBACK_LANGUAGE,
       ideName,
       profile: result.recommendedProfile,
       detectedStacks: result.detectedStacks.map((item) => ({
@@ -61,54 +65,8 @@ export class ProfileGuide {
       })),
       profileUrl: `${PROFILE_FILE_URL}/${result.recommendedProfile.templateFile}`,
       profilesUrl: PROFILES_URL,
-      messages: {
-        en: {
-          title: `Recommended ${ideName ? `${ideName} ` : ''}Profile`,
-          intro: 'StackPilot detected this project and recommends a lightweight profile to keep your editor focused.',
-          detected: 'Detected technologies',
-          evidence: 'Detection evidence',
-          recommendation: 'Recommended profile',
-          extensions: 'Recommended extensions',
-          templates: 'Profile templates',
-          templatesIntro: 'Profile templates are hosted on GitHub so you can review, download, and customize them manually.',
-          openAllTemplates: 'View all templates',
-          openRecommendedTemplate: 'View recommended template',
-          howToUse: 'How to use',
-          customNote: 'If your project combines multiple stacks and no combined template is available, start from the recommended template and customize it for your workflow.',
-          safety: 'Safety',
-          safetyText: 'StackPilot does not install extensions, remove extensions, or switch profiles automatically. You review and apply everything manually.',
-          steps: [
-            'Open the GitHub profiles directory.',
-            'Download the recommended .code-profile file.',
-            'In your editor, run Profiles: Import Profile... from the Command Palette.',
-            'Select the downloaded file.',
-            'Review the settings and extensions, then create the profile.'
-          ]
-        },
-        'zh-CN': {
-          title: `推荐的${ideName ? ` ${ideName}` : ''} Profile`,
-          intro: 'StackPilot 检测到了当前项目，并推荐一个轻量 Profile，帮助你保持编辑器聚焦。',
-          detected: '检测到的技术栈',
-          evidence: '检测依据',
-          recommendation: '推荐 Profile',
-          extensions: '推荐插件',
-          templates: 'Profile 模板',
-          templatesIntro: 'Profile 模板托管在 GitHub，方便你手动查看、下载和自定义。',
-          openAllTemplates: '查看全部模板',
-          openRecommendedTemplate: '查看推荐模板',
-          howToUse: '如何使用',
-          customNote: '如果你的项目组合了多个技术栈，但暂时没有对应的组合模板，可以从推荐模板开始并按自己的工作流自定义。',
-          safety: '说明',
-          safetyText: 'StackPilot 不会自动安装插件、卸载插件或切换 Profile。所有内容都由你手动检查并应用。',
-          steps: [
-            '打开 GitHub profiles 目录。',
-            '下载推荐的 .code-profile 文件。',
-            '在编辑器命令面板中运行 Profiles: Import Profile...。',
-            '选择下载的文件。',
-            '检查设置和插件列表，然后创建 Profile。'
-          ]
-        }
-      }
+      officialGithubUrl: OFFICIAL_GITHUB_URL,
+      messages
     };
 
     return `<!DOCTYPE html>
@@ -126,9 +84,10 @@ export class ProfileGuide {
     h2 { border-bottom: 1px solid var(--vscode-panel-border); font-size: 18px; margin: 28px 0 14px; padding-bottom: 8px; }
     p { line-height: 1.6; }
     a { color: var(--vscode-textLink-foreground); }
-    .language-switch { display: flex; gap: 8px; flex-shrink: 0; }
+    .language-switch { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; min-width: 160px; }
+    .language-switch label { color: var(--vscode-descriptionForeground); font-size: 12px; }
+    .language-select { background: var(--vscode-dropdown-background); border: 1px solid var(--vscode-dropdown-border); border-radius: 6px; color: var(--vscode-dropdown-foreground); padding: 7px 10px; }
     button { background: var(--vscode-button-secondaryBackground); border: 0; border-radius: 4px; color: var(--vscode-button-secondaryForeground); cursor: pointer; padding: 6px 10px; }
-    button.active { background: var(--vscode-button-background); color: var(--vscode-button-foreground); }
     .card { background: var(--vscode-editorWidget-background); border: 1px solid var(--vscode-panel-border); border-radius: 8px; margin: 12px 0; padding: 16px; }
     .profile-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
     .muted { color: var(--vscode-descriptionForeground); }
@@ -137,6 +96,9 @@ export class ProfileGuide {
     li { margin: 6px 0; }
     .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
     .button-link { background: var(--vscode-button-background); border-radius: 4px; color: var(--vscode-button-foreground); padding: 8px 12px; text-decoration: none; }
+    .safety-links { margin-top: 12px; }
+    .repo-line { line-height: 1.6; margin-top: 10px; word-break: break-all; }
+    .repo-line strong { margin-right: 6px; }
     code { background: var(--vscode-textCodeBlock-background); border-radius: 3px; padding: 2px 4px; }
   </style>
 </head>
@@ -147,9 +109,9 @@ export class ProfileGuide {
         <h1 id="title"></h1>
         <p id="intro" class="muted"></p>
       </div>
-      <div class="language-switch" aria-label="Language">
-        <button type="button" data-language="en">English</button>
-        <button type="button" data-language="zh-CN">简体中文</button>
+      <div class="language-switch">
+        <label for="language-select" id="language-label"></label>
+        <select id="language-select" class="language-select" aria-labelledby="language-label"></select>
       </div>
     </header>
 
@@ -191,6 +153,13 @@ export class ProfileGuide {
     <section>
       <h2 id="safety-heading"></h2>
       <p id="safety-text"></p>
+      <p class="repo-line">
+        <strong id="official-github-label"></strong>
+        <a id="official-github-text-link" href="${escapeAttribute(OFFICIAL_GITHUB_URL)}" target="_blank" rel="noopener noreferrer">${escapeHtml(OFFICIAL_GITHUB_URL)}</a>
+      </p>
+      <div class="links safety-links">
+        <a id="official-github-link" class="button-link" href="${escapeAttribute(OFFICIAL_GITHUB_URL)}" target="_blank" rel="noopener noreferrer"></a>
+      </div>
     </section>
   </main>
 
@@ -199,10 +168,11 @@ export class ProfileGuide {
     let language = data.defaultLanguage;
 
     function render() {
-      const messages = data.messages[language] || data.messages.en;
+      const messages = data.messages[language] || data.messages[data.fallbackLanguage];
       document.documentElement.lang = language;
       document.getElementById('title').textContent = messages.title;
       document.getElementById('intro').textContent = messages.intro;
+      document.getElementById('language-label').textContent = messages.languageLabel;
       document.getElementById('detected-heading').textContent = messages.detected;
       document.getElementById('recommendation-heading').textContent = messages.recommendation;
       document.getElementById('extensions-heading').textContent = messages.extensions;
@@ -214,10 +184,10 @@ export class ProfileGuide {
       document.getElementById('custom-note').textContent = messages.customNote;
       document.getElementById('safety-heading').textContent = messages.safety;
       document.getElementById('safety-text').textContent = messages.safetyText;
+      document.getElementById('official-github-label').textContent = messages.officialGithubLabel + ':';
+      document.getElementById('official-github-link').textContent = messages.openOfficialGithub;
 
-      document.querySelectorAll('[data-language]').forEach((button) => {
-        button.classList.toggle('active', button.dataset.language === language);
-      });
+      document.getElementById('language-select').value = language;
 
       const stacks = document.getElementById('detected-stacks');
       stacks.textContent = '';
@@ -256,11 +226,24 @@ export class ProfileGuide {
       });
     }
 
-    document.querySelectorAll('[data-language]').forEach((button) => {
-      button.addEventListener('click', () => {
-        language = button.dataset.language;
+    const languageSelect = document.getElementById('language-select');
+    data.languages.forEach((item) => {
+      const option = document.createElement('option');
+      option.value = item.code;
+      option.textContent = item.label;
+      languageSelect.appendChild(option);
+    });
+
+    languageSelect.addEventListener('change', (event) => {
+      const nextLanguage = event.target && event.target.value;
+      if (!data.messages[nextLanguage]) {
+        language = data.fallbackLanguage;
         render();
-      });
+        return;
+      }
+
+      language = nextLanguage;
+      render();
     });
 
     render();

@@ -1,5 +1,5 @@
 {
   "name": "StackPilot React",
-  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"typescript.preferences.importModuleSpecifier\": \"non-relative\",\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescriptreact]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  }\n}",
-  "extensions": "[\n  { \"identifier\": { \"id\": \"dbaeumer.vscode-eslint\" }, \"displayName\": \"ESLint\" },\n  { \"identifier\": { \"id\": \"esbenp.prettier-vscode\" }, \"displayName\": \"Prettier\" },\n  { \"identifier\": { \"id\": \"dsznajder.es7-react-js-snippets\" }, \"displayName\": \"ES7+ React/Redux/React-Native snippets\" }\n]"
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"typescript.preferences.importModuleSpecifier\": \"non-relative\",\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[javascriptreact]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescriptreact]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  }\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"dbaeumer.vscode-eslint\" }, \"displayName\": \"ESLint\" },\n  { \"identifier\": { \"id\": \"esbenp.prettier-vscode\" }, \"displayName\": \"Prettier\" },\n  { \"identifier\": { \"id\": \"christian-kohler.npm-intellisense\" }, \"displayName\": \"npm Intellisense\" }\n]"
 }

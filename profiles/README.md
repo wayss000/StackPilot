@@ -2,6 +2,8 @@
 
 These templates are starter profile exports for VS Code-compatible editors.
 
+The folder includes both single-stack profiles and a first batch of combined full-stack profiles for monorepos such as `Python + Vue` or `Java + React`.
+
 To use one:
 
 1. Open the Command Palette.

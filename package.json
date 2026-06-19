@@ -2,9 +2,13 @@
   "name": "stackpilot",
   "displayName": "StackPilot",
   "description": "Detect project stacks and guide developers to lightweight VS Code profiles.",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "publisher": "stackpilot",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wayss000/StackPilot.git"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -56,6 +60,7 @@
   },
   "scripts": {
     "compile": "tsc -p ./",
+    "compare": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "vscode:prepublish": "npm run compile"
   },

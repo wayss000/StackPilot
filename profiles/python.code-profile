@@ -1,5 +1,5 @@
 {
   "name": "StackPilot Python",
   "settings": "{\n  \"editor.formatOnSave\": true,\n  \"python.analysis.autoImportCompletions\": true,\n  \"python.analysis.typeCheckingMode\": \"basic\",\n  \"[python]\": {\n    \"editor.defaultFormatter\": \"charliermarsh.ruff\"\n  }\n}",
-  "extensions": "[\n  { \"identifier\": { \"id\": \"ms-python.python\" }, \"displayName\": \"Python\" },\n  { \"identifier\": { \"id\": \"ms-python.vscode-pylance\" }, \"displayName\": \"Pylance\" },\n  { \"identifier\": { \"id\": \"charliermarsh.ruff\" }, \"displayName\": \"Ruff\" },\n  { \"identifier\": { \"id\": \"tamasfe.even-better-toml\" }, \"displayName\": \"Even Better TOML\" }\n]"
+  "extensions": "[\n  { \"identifier\": { \"id\": \"ms-python.python\" }, \"displayName\": \"Python\" },\n  { \"identifier\": { \"id\": \"ms-python.vscode-pylance\" }, \"displayName\": \"Pylance\" },\n  { \"identifier\": { \"id\": \"ms-python.debugpy\" }, \"displayName\": \"Python Debugger\" },\n  { \"identifier\": { \"id\": \"charliermarsh.ruff\" }, \"displayName\": \"Ruff\" }\n]"
 }

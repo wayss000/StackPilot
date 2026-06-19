@@ -1,5 +1,5 @@
 {
   "name": "StackPilot Go",
-  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"go.toolsManagement.autoUpdate\": true,\n  \"go.useLanguageServer\": true\n}",
-  "extensions": "[\n  { \"identifier\": { \"id\": \"golang.go\" }, \"displayName\": \"Go\" },\n  { \"identifier\": { \"id\": \"streetsidesoftware.code-spell-checker\" }, \"displayName\": \"Code Spell Checker\" }\n]"
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"go.toolsManagement.autoUpdate\": true,\n  \"go.useLanguageServer\": true,\n  \"gopls\": {\n    \"formatting.gofumpt\": true\n  },\n  \"[go]\": {\n    \"editor.defaultFormatter\": \"golang.go\"\n  }\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"golang.go\" }, \"displayName\": \"Go\" }\n]"
 }

@@ -1,0 +1,5 @@
+{
+  "name": "StackPilot Go + Vue",
+  "settings": "{\n  \"editor.formatOnSave\": true,\n  \"go.toolsManagement.autoUpdate\": true,\n  \"go.useLanguageServer\": true,\n  \"gopls\": {\n    \"formatting.gofumpt\": true\n  },\n  \"[go]\": {\n    \"editor.defaultFormatter\": \"golang.go\"\n  },\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[vue]\": {\n    \"editor.defaultFormatter\": \"Vue.volar\"\n  }\n}",
+  "extensions": "[\n  { \"identifier\": { \"id\": \"golang.go\" }, \"displayName\": \"Go\" },\n  { \"identifier\": { \"id\": \"Vue.volar\" }, \"displayName\": \"Vue - Official\" },\n  { \"identifier\": { \"id\": \"dbaeumer.vscode-eslint\" }, \"displayName\": \"ESLint\" },\n  { \"identifier\": { \"id\": \"esbenp.prettier-vscode\" }, \"displayName\": \"Prettier\" }\n]"
+}
