@@ -20,7 +20,8 @@ export async function detectWorkspaceStack(): Promise<DetectionResult | undefine
     () => detectGo(folder),
     () => detectRust(folder),
     () => detectPackageStack(folder),
-    () => detectPython(folder)
+    () => detectPython(folder),
+    () => detectMarkdownKnowledgeBase(folder)
   ];
   const detectedStacks = new Map<StackId, DetectedStack>();
 
@@ -88,6 +89,18 @@ async function detectAiAgent(folder: vscode.WorkspaceFolder): Promise<DetectedSt
   }
 
   return evidence.length ? result('ai-agent', evidence) : undefined;
+}
+
+async function detectMarkdownKnowledgeBase(folder: vscode.WorkspaceFolder): Promise<DetectedStack | undefined> {
+  const files = await vscode.workspace.findFiles(
+    new vscode.RelativePattern(folder, '**/*.md'),
+    new vscode.RelativePattern(folder, '{**/node_modules/**,**/.git/**,**/dist/**,**/build/**,**/out/**,**/target/**,**/coverage/**,**/vendor/**,**/.venv/**,**/venv/**}'),
+    500
+  );
+
+  return files.length
+    ? result('markdown', [`${files.length}${files.length === 500 ? '+' : ''} Markdown document${files.length === 1 ? '' : 's'}`])
+    : undefined;
 }
 
 async function detectPackageStack(folder: vscode.WorkspaceFolder): Promise<DetectedStack | undefined> {
@@ -189,7 +202,7 @@ function stackIdFromPath(path: string): StackId | undefined {
 }
 
 function selectRecommendedProfile(stackIds: StackId[]): StackId {
-  const priority: StackId[] = ['ai-agent', 'java', 'go', 'rust', 'python', 'vue', 'react', 'node'];
+  const priority: StackId[] = ['ai-agent', 'java', 'go', 'rust', 'python', 'vue', 'react', 'node', 'markdown'];
   return priority.find((stackId) => stackIds.includes(stackId)) ?? stackIds[0];
 }
 

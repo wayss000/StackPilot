@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-export type StackId = 'java' | 'go' | 'python' | 'vue' | 'react' | 'node' | 'rust' | 'ai-agent';
+export type StackId = 'java' | 'go' | 'python' | 'vue' | 'react' | 'node' | 'rust' | 'ai-agent' | 'markdown';
 
 export interface RecommendedExtension {
   id: string;

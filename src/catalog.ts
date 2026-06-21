@@ -96,6 +96,18 @@ export const STACK_PROFILES: Record<StackId, StackProfile> = {
       { id: 'humao.rest-client', name: 'REST Client', reason: 'Test model, tool, and service endpoints.' },
       { id: 'yzhang.markdown-all-in-one', name: 'Markdown All in One', reason: 'Better editing for prompts, specs, and agent documentation.' }
     ]
+  },
+  markdown: {
+    id: 'markdown',
+    label: 'Markdown Knowledge Base',
+    profileName: 'StackPilot Markdown Knowledge Base',
+    templateFile: 'markdown-knowledge-base.code-profile',
+    description: 'Markdown-first knowledge bases, documentation, and personal wikis.',
+    extensions: [
+      { id: 'yzhang.markdown-all-in-one', name: 'Markdown All in One', reason: 'Table of contents, shortcuts, list editing, and other core Markdown authoring tools.' },
+      { id: 'DavidAnson.vscode-markdownlint', name: 'markdownlint', reason: 'Consistent Markdown style and early checks for common authoring mistakes.' },
+      { id: 'bierner.markdown-mermaid', name: 'Markdown Preview Mermaid Support', reason: 'Renders Mermaid diagrams directly in Markdown previews.' }
+    ]
   }
 };
 
